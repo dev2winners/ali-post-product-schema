@@ -33,15 +33,7 @@ class ProductPostSchemaController extends Controller
      */
     public function setSchema($request)
     {
-
         $request_body = $request->getContent();
-        $request_body_decoded = json_decode($request_body);
-        $response_decoded = json_decode(file_get_contents(base_path() . '\misc\json\forPostSchema.json'));
-
-        $response_decoded->category_id = $request_body_decoded->category_id;
-        $response_decoded->title_multi_language_list[0]->title = $request_body_decoded->title;
-        $response_decoded->description_multi_language_list[0]->module_list[0]->html->content = $request_body_decoded->description;
-
-        return json_encode($response_decoded, JSON_UNESCAPED_UNICODE);
+        return $request_body;
     }
 }
