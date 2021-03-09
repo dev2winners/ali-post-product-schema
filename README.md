@@ -26,40 +26,37 @@ ALI_SESSION_KEY=xxxxx
 
 POST-запрос, содержащий в теле строку - объект JSON, описывающий продукт в формате product schema из документации к Ali API: *https://developers.aliexpress.com/en/doc.htm?docId=109760&docType=1*
 
-Образец:
+Рабочий образец (успешно добавлен на Ali):
 
 ```
 {
-    "category_id": 200004218,
+    "category_id": 348,
     "title_multi_language_list": [
         {
-            "locale": "ru_RU",
-            "title": "Тестовый продукт 1"
+            "locale": "es_ES",
+            "title": "a test product test test 001"
         }
     ],
     "description_multi_language_list": [
         {
-            "locale": "ru_RU",
+            "locale": "es_ES",
             "module_list": [
                 {
                     "type": "html",
                     "html": {
-                        "content": "Описание тестового продукта 1"
+                        "content": "uno test test description 002"
                     }
                 }
             ]
         }
     ],
-    "locale": "ru_RU",
+    "locale": "es_ES",
     "product_units_type": "100000015",
     "image_url_list": [
         "https://upload.wikimedia.org/wikipedia/commons/b/ba/E-SENS_architecture.jpg"
     ],
     "category_attributes": {
-        "BrandName": {
-            "value": "200010868"
-        },
-        "ShirtsType": {
+        "Shirts Type": {
             "value": "200001208"
         },
         "Material": {
@@ -67,7 +64,7 @@ POST-запрос, содержащий в теле строку - объект 
                 "567"
             ]
         },
-        "SleeveLength(cm)": {
+        "Sleeve Length(cm)": {
             "value": "200001500"
         }
     },
@@ -91,8 +88,9 @@ POST-запрос, содержащий в теле строку - объект 
     "package_height": 20,
     "package_width": 30,
     "shipping_preparation_time": 3,
-    "shipping_template_id": 1000,
-    "service_template_id": "0"
+    "shipping_template_id": "729874672",
+    "service_template_id": "0",
+    "brand_name": "200010868"
 }
 ```
 
@@ -100,9 +98,9 @@ POST-запрос, содержащий в теле строку - объект 
 
 3. Получает ответ от Aliexpress и возвращает его клиенту.
 
-Сейчас ответ выглядит примерно так:
+Ответ выглядит так:
 ```
-{"code":"15","msg":"Remote service error","sub_code":"F00-00-10020-002","sub_msg":"#\/shipping_template_id: #: 0
-subschemas matched instead of one","request_id":"lptiptvfdric"}
+{"result":{"product_id":"1005002278016309"},"request_id":"5170wb545uuj"}
 ```
-Это, скорее всего, потому, что не настроены шаблоны доставки в самом маркете. А у меня доступа туда нет. 
+зная id продукта, мы дальше можем с ним делать что-то еще.
+
